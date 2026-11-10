@@ -1,0 +1,12 @@
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(4, 6)">
+    <path d="M24 3L43.05 14V34L24 45L4.95 34V14L24 3Z" fill="#0B192C" stroke="#FF6500" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M12 28L24 16L36 28" stroke="#FF6500" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M18 34L24 28L30 34" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="24" cy="24" r="2.5" fill="#FF6500"/>
+  </g>
+  <text x="64" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="24" fill="#0B192C" letter-spacing="-0.5">DCR</text>
+  <text x="122" y="32" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="24" fill="#FF6500" letter-spacing="-0.5">LOGISTICS</text>
+  <text x="65" y="46" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="8.5" fill="#64748B" letter-spacing="1.2">WE KEEP YOUR BUSINESS MOVING</text>
+</svg>
+
