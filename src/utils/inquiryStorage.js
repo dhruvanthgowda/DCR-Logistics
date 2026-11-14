@@ -34,10 +34,10 @@ export async function saveInquiry(data, type = 'quote') {
     console.error('Error saving inquiry locally:', err);
   }
 
-  // 2. If a backend webhook or Formspree endpoint is configured, forward the lead
+  // 2. Dispatch email to /api/send-enquiry (or custom webhook)
   let remoteSuccess = false;
   let remoteError = null;
-  const webhookUrl = COMPANY_CONFIG.enquiryConfig.webhookEndpoint;
+  const webhookUrl = COMPANY_CONFIG.enquiryConfig.webhookEndpoint || '/api/send-enquiry';
 
   if (webhookUrl && webhookUrl.trim() !== '') {
     try {
@@ -49,14 +49,15 @@ export async function saveInquiry(data, type = 'quote') {
         },
         body: JSON.stringify(record)
       });
-      if (response.ok) {
+      const resJson = await response.json().catch(() => ({}));
+      if (response.ok && resJson.success !== false) {
         remoteSuccess = true;
       } else {
-        remoteError = `Server returned status ${response.status}`;
+        remoteError = resJson.error || `Server returned status ${response.status}`;
       }
     } catch (err) {
-      remoteError = err.message || 'Network error delivering to webhook';
-      console.warn('Webhook delivery notice:', remoteError);
+      remoteError = err.message || 'Network error delivering inquiry';
+      console.warn('Delivery notice:', remoteError);
     }
   }
 
@@ -65,7 +66,7 @@ export async function saveInquiry(data, type = 'quote') {
     id,
     record,
     remoteSent: remoteSuccess,
-    remoteConfigured: Boolean(webhookUrl && webhookUrl.trim() !== ''),
+    remoteConfigured: true,
     remoteError
   };
 }

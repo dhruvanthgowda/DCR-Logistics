@@ -128,6 +128,12 @@ export default function QuoteModal() {
                     <span className="font-semibold text-slate-900">{formData.space}</span>
                   </div>
                 )}
+                {formData.email && (
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Email Confirmation:</span>
+                    <span className="font-semibold text-emerald-700">Copy dispatched to {formData.email}</span>
+                  </div>
+                )}
                 <div className="flex justify-between">
                   <span className="text-slate-500">Facility Location:</span>
                   <span className="font-semibold text-slate-900">Attibele Hub, Bangalore</span>
